@@ -34,6 +34,9 @@ classifiers = [
   'Programming Language :: Python :: 3.10',
 ]
 
+[tool.poetry.scripts]
+cc-easyhooks = "easyhooks.cli:main"
+
 [tool.poetry.dependencies]
 python = ">=3.9"
 
