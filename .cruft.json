@@ -1,0 +1,24 @@
+{
+  "checkout": null,
+  "commit": "8cd5bfe542ef1ec25ed1cc1a78b2ed73a53b765e",
+  "context": {
+    "cookiecutter": {
+      "_commit": "8cd5bfe542ef1ec25ed1cc1a78b2ed73a53b765e",
+      "_template": "https://github.com/lucasrcezimbra/cookiecutter-pypackage",
+      "command_line_interface": "No command-line interface",
+      "coverage": "Codecov",
+      "email": "lucas@cezimbra.tec.br",
+      "full_name": "Lucas Rangel Cezimbra",
+      "github_username": "lucasrcezimbra",
+      "namespace": "easyhooks",
+      "open_source_license": "MIT license",
+      "project_name": "Claude Code Easyhooks",
+      "project_short_description": "Framework to create hooks for Claude Code",
+      "project_slug": "claude-code-easyhooks",
+      "pypi_username": "Lrcezimbra",
+      "version": "0.0.1"
+    }
+  },
+  "directory": null,
+  "template": "https://github.com/lucasrcezimbra/cookiecutter-pypackage"
+}
