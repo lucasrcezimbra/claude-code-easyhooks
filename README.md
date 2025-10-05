@@ -7,7 +7,7 @@
 
 [![Documentation Status](https://readthedocs.org/projects/claude-code-easyhooks/badge/?version=latest)](https://claude-code-easyhooks.readthedocs.io/en/latest/?version=latest)
 
-Framework to create hooks for Claude Code
+Micro-framework to create hooks for Claude Code
 
 
 * Documentation: https://claude-code-easyhooks.readthedocs.io.
