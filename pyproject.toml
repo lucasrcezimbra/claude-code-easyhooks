@@ -6,7 +6,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "claude-code-easyhooks"
-description = "Framework to create hooks for Claude Code"
+description = "Micro-framework to create hooks for Claude Code"
 version = "0.0.1"
 keywords = ["claude-code-easyhooks"]
 license = "LICENSE"
