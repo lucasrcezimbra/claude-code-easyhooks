@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 _registered_hooks = {}
 
 
-def hook(filters):
+def hook(*filters):
     def wrapper(func):
         for f in filters:
             logging.debug(f"Registering hook {func} for filter {f}")

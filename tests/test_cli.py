@@ -56,7 +56,7 @@ def test_custom_easyhooks_path(pre_tool_use_bash_input):
 def test_cli_pre_tool_use_bash_hook(mocker, pre_tool_use_bash_input):
     test_list = []
 
-    @hook([Events.PreToolUse.Bash])
+    @hook(Events.PreToolUse.Bash)
     def bash_hook(input):
         test_list.append(("Bash", input))
 
@@ -70,7 +70,7 @@ def test_cli_pre_tool_use_bash_hook(mocker, pre_tool_use_bash_input):
 def test_cli_pre_tool_use_write_hook(mocker, pre_tool_use_write_input):
     test_list = []
 
-    @hook([Events.PreToolUse.Write])
+    @hook(Events.PreToolUse.Write)
     def write_hook(input):
         test_list.append(input)
 
@@ -86,7 +86,7 @@ def test_cli_pre_tool_use_bash_hook_dont_call_other_hooks(
 ):
     test_list = []
 
-    @hook([Events.PreToolUse.Write])
+    @hook(Events.PreToolUse.Write)
     def write_hook(input):
         test_list.append(input)
 
@@ -100,11 +100,11 @@ def test_cli_pre_tool_use_bash_hook_dont_call_other_hooks(
 def test_multiple_events(mocker, pre_tool_use_bash_input):
     test_list = []
 
-    @hook([Events.PreToolUse.Bash])
+    @hook(Events.PreToolUse.Bash)
     def bash_hook(input):
         test_list.append(("bash_hook", input))
 
-    @hook([Events.PreToolUse.Write])
+    @hook(Events.PreToolUse.Write)
     def write_hook(input):
         test_list.append(("write_hook", input))
 
@@ -118,11 +118,11 @@ def test_multiple_events(mocker, pre_tool_use_bash_input):
 def test_multiple_hooks_same_event(mocker, pre_tool_use_bash_input):
     test_list = []
 
-    @hook([Events.PreToolUse.Bash])
+    @hook(Events.PreToolUse.Bash)
     def bash_hook1(input):
         test_list.append(("bash_hook1", input))
 
-    @hook([Events.PreToolUse.Bash])
+    @hook(Events.PreToolUse.Bash)
     def bash_hook2(input):
         test_list.append(("bash_hook2", input))
 
