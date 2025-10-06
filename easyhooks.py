@@ -1,7 +1,11 @@
 import importlib
 import json
+import logging
 import sys
 from pathlib import Path
+
+# TODO: log to file
+logger = logging.getLogger(__name__)
 
 _registered_hooks = {}
 
@@ -9,6 +13,7 @@ _registered_hooks = {}
 def hook(filters):
     def wrapper(func):
         for f in filters:
+            logging.debug(f"Registering hook {func} for filter {f}")
             _registered_hooks.setdefault(f, [])
             _registered_hooks[f].append(func)
 
@@ -32,14 +37,18 @@ def _cli():
         else (Path.home() / ".claude" / "easyhooks")
     )
 
+    logger.info(f"Loading hooks from {path_to_hooks}")
+
     sys.path.insert(0, str(path_to_hooks))
 
     for file in path_to_hooks.glob("*.py"):
         if file.name != "__init__.py":
             module_name = file.stem
+            logger.info(f"Loading hook {module_name}")
             importlib.import_module(module_name)
 
     input_data = json.loads(sys.stdin.read())
+    logger.debug(input_data)
     # TODO: dataclass
 
     # TODO: extract this logic
@@ -47,6 +56,7 @@ def _cli():
         f'{input_data["hook_event_name"]}.{input_data["tool_name"]}', []
     )
     for f in funcs:
+        logger.info(f"Calling hook {f}")
         f(input_data)
 
 
