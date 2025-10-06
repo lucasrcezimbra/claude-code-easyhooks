@@ -25,8 +25,15 @@ def hook(*filters):
 class Events:
     # TODO: add others
     class PreToolUse:
-        # TODO: add others
         Bash = "PreToolUse.Bash"
+        Edit = "PreToolUse.Edit"
+        Glob = "PreToolUse.Glob"
+        Grep = "PreToolUse.Grep"
+        MultiEdit = "PreToolUse.MultiEdit"
+        Read = "PreToolUse.Read"
+        Task = "PreToolUse.Task"
+        WebFetch = "PreToolUse.WebFetch"
+        WebSearch = "PreToolUse.WebSearch"
         Write = "PreToolUse.Write"
 
 
