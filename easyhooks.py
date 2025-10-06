@@ -1,5 +1,7 @@
+import importlib
 import json
 import sys
+from pathlib import Path
 
 _registered_hooks = {}
 
@@ -24,6 +26,19 @@ class Events:
 
 
 def _cli():
+    path_to_hooks = (
+        Path(sys.argv[1])
+        if len(sys.argv) > 1
+        else (Path.home() / ".claude" / "easyhooks")
+    )
+
+    sys.path.insert(0, str(path_to_hooks))
+
+    for file in path_to_hooks.glob("*.py"):
+        if file.name != "__init__.py":
+            module_name = file.stem
+            importlib.import_module(module_name)
+
     input_data = json.loads(sys.stdin.read())
     # TODO: dataclass
 
