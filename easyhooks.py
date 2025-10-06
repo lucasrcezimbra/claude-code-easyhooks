@@ -1,11 +1,36 @@
 import importlib
 import json
 import logging
+import os
 import sys
+import tempfile
 from pathlib import Path
 
-# TODO: log to file
+# Get configuration from environment
+log_level = os.getenv('CC_EASYHOOKS_LOG_LEVEL', 'INFO').upper()
+log_file = os.getenv(
+    'CC_EASYHOOKS_LOG_FILE',
+    str(Path(tempfile.gettempdir()) / "easyhooks.log")
+)
+
+# Create logger
 logger = logging.getLogger(__name__)
+logger.setLevel(getattr(logging, log_level, logging.INFO))
+
+# Ensure directory exists
+Path(log_file).parent.mkdir(parents=True, exist_ok=True)
+
+# Create file handler
+handler = logging.FileHandler(log_file, mode='a', encoding='utf-8')
+
+# Set formatter
+formatter = logging.Formatter(
+    '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+handler.setFormatter(formatter)
+
+logger.addHandler(handler)
 
 _registered_hooks = {}
 
