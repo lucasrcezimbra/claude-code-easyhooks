@@ -48,6 +48,20 @@ uvx claude-code-easyhooks
 3. Create your easyhooks in `$HOME/.claude/easyhooks/`. All `.py` files inside this directory will be loaded as easyhooks. Check out some [examples](https://github.com/lucasrcezimbra/claude-code-easyhooks/tree/master/examples).
 
 
+## Configuration
+
+### Environment Variables
+
+- **`CC_EASYHOOKS_LOG_LEVEL`**: Set the logging level (default: `INFO`). Valid values: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`.
+- **`CC_EASYHOOKS_LOG_FILE`**: Set the log file path (default: `<tempdir>/easyhooks.log`). On Linux/Mac this is typically `/tmp/easyhooks.log`, on Windows `C:\Users\<user>\AppData\Local\Temp\easyhooks.log`.
+
+Example:
+```bash
+export CC_EASYHOOKS_LOG_LEVEL=DEBUG
+export CC_EASYHOOKS_LOG_FILE=$HOME/.claude/easyhooks/easyhooks.log
+```
+
+
 
 ## Contributing
 
