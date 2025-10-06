@@ -9,6 +9,8 @@
 
 Micro-framework to create hooks for Claude Code
 
+![](./docs/comparison.png)
+
 
 * Documentation: https://claude-code-easyhooks.readthedocs.io.
 
