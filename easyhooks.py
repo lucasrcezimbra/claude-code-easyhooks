@@ -30,6 +30,10 @@ class Events:
         Write = "PreToolUse.Write"
 
 
+class DenyTool(Exception):
+    pass
+
+
 def _cli():
     path_to_hooks = (
         Path(sys.argv[1])
@@ -55,9 +59,13 @@ def _cli():
     funcs = _registered_hooks.get(
         f'{input_data["hook_event_name"]}.{input_data["tool_name"]}', []
     )
-    for f in funcs:
-        logger.info(f"Calling hook {f}")
-        f(input_data)
+    try:
+        for f in funcs:
+            logger.info(f"Calling hook {f}")
+            f(input_data)
+    except DenyTool as e:
+        print(str(e), file=sys.stderr)
+        sys.exit(2)
 
 
 __author__ = """Lucas Rangel Cezimbra"""

@@ -134,3 +134,10 @@ def test_multiple_hooks_same_event(mocker, pre_tool_use_bash_input):
         ("bash_hook1", pre_tool_use_bash_input),
         ("bash_hook2", pre_tool_use_bash_input),
     ]
+
+
+def test_deny_tool(pre_tool_use_bash_input):
+    pre_tool_use_bash_input["tool_input"]["command"] = "BLOCK THIS COMMAND"
+    result = call_cli(pre_tool_use_bash_input)
+    assert result.returncode == 2
+    assert result.stderr.decode() == "Blocking command BLOCK THIS COMMAND\n"
