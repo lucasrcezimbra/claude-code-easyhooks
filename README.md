@@ -13,18 +13,38 @@ Micro-framework to create hooks for Claude Code
 * Documentation: https://claude-code-easyhooks.readthedocs.io.
 
 
-## Installation
+## How to use
 
+1. Install:
 ```bash
 pip install claude-code-easyhooks
+# or
+pipx install claude-code-easyhooks
+# or
+uvx claude-code-easyhooks
 ```
 
+2. Add this config to your `.claude/settings.json`:
+```json
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "claude-code-easyhooks",
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
+    ]
+  }
+}
+```
 
+3. Create your easyhooks in `$HOME/.claude/easyhooks/`. All `.py` files inside this directory will be loaded as easyhooks. Check out some [examples](https://github.com/lucasrcezimbra/claude-code-easyhooks/tree/master/examples).
 
-
-## How to Use
-
-- TODO
 
 
 ## Contributing
