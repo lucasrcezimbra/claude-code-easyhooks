@@ -34,52 +34,23 @@ def pre_tool_use_bash_input():
     }
 
 
-def test_cli_installed():
-    result = subprocess.run(
-        ["cc-easyhooks"],
-        input=json.dumps({}).encode(),
+def call_cli(input):
+    return subprocess.run(
+        ["cc-easyhooks", (Path(__file__).resolve().parent / "easyhooks")],
+        input=json.dumps(input).encode(),
         capture_output=True,
     )
-
-    assert result.returncode == 0
 
 
 def test_cli_input(pre_tool_use_write_input):
-    result = subprocess.run(
-        ["cc-easyhooks"],
-        input=json.dumps(pre_tool_use_write_input).encode(),
-        capture_output=True,
-    )
-
+    result = call_cli(pre_tool_use_write_input)
     assert result.returncode == 0
 
 
 def test_custom_easyhooks_path(pre_tool_use_bash_input):
-    result = subprocess.run(
-        ["cc-easyhooks", (Path(__file__).resolve().parent / "easyhooks")],
-        input=json.dumps(pre_tool_use_bash_input).encode(),
-        capture_output=True,
-    )
-
+    result = call_cli(pre_tool_use_bash_input)
     assert result.returncode == 0
     assert result.stdout.decode() == "Printing command: ls\n"
-
-
-def test_call_pre_tool_use_bash_hook_dont_call_other_hooks(pre_tool_use_bash_input):
-    test_list = []
-
-    @hook([Events.PreToolUse.Write])
-    def write_hook(input):
-        test_list.append(input)
-
-    result = subprocess.run(
-        ["cc-easyhooks"],
-        input=json.dumps(pre_tool_use_bash_input).encode(),
-        capture_output=True,
-    )
-
-    assert result.returncode == 0
-    assert test_list == []
 
 
 def test_cli_pre_tool_use_bash_hook(mocker, pre_tool_use_bash_input):

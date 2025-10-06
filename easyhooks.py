@@ -42,7 +42,6 @@ def _cli():
     input_data = json.loads(sys.stdin.read())
     # TODO: dataclass
 
-    # TODO: autodiscover hooks
     for event, funcs in _registered_hooks.items():
         # TODO: _registered_hooks.get by hook_event_name and tool_name
         if (
