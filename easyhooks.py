@@ -21,8 +21,8 @@ class Events:
     # TODO: add others
     class PreToolUse:
         # TODO: add others
-        Bash = "Bash"
-        Write = "Write"
+        Bash = "PreToolUse.Bash"
+        Write = "PreToolUse.Write"
 
 
 def _cli():
@@ -42,14 +42,12 @@ def _cli():
     input_data = json.loads(sys.stdin.read())
     # TODO: dataclass
 
-    for event, funcs in _registered_hooks.items():
-        # TODO: _registered_hooks.get by hook_event_name and tool_name
-        if (
-            input_data["hook_event_name"] == "PreToolUse"
-            and event == input_data["tool_name"]
-        ):
-            for f in funcs:
-                f(input_data)
+    # TODO: extract this logic
+    funcs = _registered_hooks.get(
+        f'{input_data["hook_event_name"]}.{input_data["tool_name"]}', []
+    )
+    for f in funcs:
+        f(input_data)
 
 
 __author__ = """Lucas Rangel Cezimbra"""
