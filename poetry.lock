@@ -342,24 +342,25 @@ toml = ["tomli ; python_full_version <= \"3.11.0a6\""]
 
 [[package]]
 name = "cruft"
-version = "2.15.0"
+version = "2.16.0"
 description = "Allows you to maintain all the necessary cruft for packaging and building projects separate from the code you intentionally write. Built on-top of CookieCutter."
 optional = false
 python-versions = ">=3.7"
 groups = ["dev"]
 files = [
-    {file = "cruft-2.15.0-py3-none-any.whl", hash = "sha256:2c1c6c7c512b8bc3afc66cefa829247dc067409a78ba2609d629d413444bc153"},
-    {file = "cruft-2.15.0.tar.gz", hash = "sha256:9802af66037418655e7e4b6f30b531591e0761939b3ff5dd45d27c3a3f588abe"},
+    {file = "cruft-2.16.0-py3-none-any.whl", hash = "sha256:96adb81f814300a9db0fca690eaa063547f5d3c25f486ac0a366cf8da5cdfb79"},
+    {file = "cruft-2.16.0.tar.gz", hash = "sha256:184662853fbc1c16c0137fe0e9444e0cbe95e40362f5ebb2d9fae33d9223e73f"},
 ]
 
 [package.dependencies]
 click = ">=7.1.2"
 cookiecutter = ">=1.7"
 gitpython = ">=3.0"
+toml = {version = ">=0.10", markers = "python_version < \"3.11\""}
 typer = ">=0.4.0"
 
 [package.extras]
-pyproject = ["toml (>=0.10) ; python_version < \"3.11\""]
+pyproject = ["toml"]
 
 [[package]]
 name = "distlib"
@@ -1313,6 +1314,19 @@ files = [
 ]
 
 [[package]]
+name = "toml"
+version = "0.10.2"
+description = "Python Library for Tom's Obvious, Minimal Language"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+groups = ["dev"]
+markers = "python_version < \"3.11\""
+files = [
+    {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
+    {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
+]
+
+[[package]]
 name = "tomli"
 version = "2.2.1"
 description = "A lil' TOML parser"
@@ -1461,4 +1475,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.9"
-content-hash = "0aa82f4e2c2947e9a78e8c4aa0880c13dba40705ab892e7283a9cc056cf507a6"
+content-hash = "df486f9664a1c98cdfdbc84da986df93304400e40f2f523cb5039cee3f50be49"
