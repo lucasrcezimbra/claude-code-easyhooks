@@ -17,7 +17,7 @@ jobs:
       - run: make install
       - run: make lint
       - run: make test-cov
-      - uses: codecov/codecov-action@v4.0.1
+      - uses: codecov/codecov-action@v5.5.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: lucasrcezimbra/claude-code-easyhooks
