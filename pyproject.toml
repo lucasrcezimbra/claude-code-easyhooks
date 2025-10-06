@@ -20,7 +20,7 @@ authors = [
   "Lucas Rangel Cezimbra <lucas@cezimbra.tec.br>",
 ]
 packages = [
-  { include = "easyhooks" },
+  { include = "easyhooks.py" },
 ]
 classifiers = [
   'Development Status :: 2 - Pre-Alpha',
@@ -35,7 +35,7 @@ classifiers = [
 ]
 
 [tool.poetry.scripts]
-cc-easyhooks = "easyhooks.cli:main"
+cc-easyhooks = "easyhooks:_cli"
 
 [tool.poetry.dependencies]
 python = ">=3.9"
