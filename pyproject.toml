@@ -56,7 +56,7 @@ pytest-deadfixtures = "2.2.1"
 pytest-mock = "3.14.0"
 
 [tool.poetry.group.docs.dependencies]
-myst-parser = "2.0.0"
+myst-parser = "3.0.1"
 Sphinx = "7.2.6"
 sphinx-rtd-theme = "2.0.0"
 
